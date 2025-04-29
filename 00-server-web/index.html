@@ -4,13 +4,146 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      /*Selector por identificador*/
+      #title {
+        margin: 10px 20px 15px 2px;
+        color: white;
+        background-color: black;
+      }
+      /*Selector por nombre de etiqueta*/
+      /*Se puede combinar también los selectores separados por comas*/
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 10px;
+        padding: 10px 20px 30px 40px;
+        border: green 15px solid;
+        border-width: 15px;
+        border-style: dashed;
+      }
+      /*Selector por nombre de clase*/
+      .roman-order-list {
+        list-style-type: upper-roman;
+      }
+      .upper-order-list {
+        list-style-type: upper-latin;
+      }
+      /*Un elemento es hijo de otro*/
+      li > a {
+        background-color: orange;
+      }
+      /*hover -> pseudoclases*/
+      ul > li:hover {
+        background-color: brown;
+      }
+      /*first-child -> pseudoclases*/
+      ul > li:first-child {
+        background-color: red;
+      }
+      /*nth-child -> pseudoclases*/
+      ul > li:nth-child(4) {
+        background-color: blue;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <h1 id="title">Hello World</h1>
     <h2>Hello World</h2>
     <h3>Hello World</h3>
     <h4>Hello World</h4>
     <h5>Hello World</h5>
     <h6 style="font-size: 40px">Hello World</h6>
+    <a href="www.google.com" target="_blank">Google</a>
+    <ul>
+      <li>
+        <a href="/index.html">Home</a>
+      </li>
+      <li>
+        <a href="/a-tables-anchors.html">Tables and Anchors</a>
+      </li>
+      <li>
+        <a href="/index.html">Home</a>
+      </li>
+      <li>
+        <a href="/a-tables-anchors.html">Tables and Anchors</a>
+      </li>
+    </ul>
+    <p>Submenu - Internal Links</p>
+    <ul>
+      <li><a href="#paragraph1">Paragraph 1</a></li>
+      <li><a href="#paragraph2">Paragraph 2</a></li>
+    </ul>
+    <p id="paragraph1">Paragraph 1</p>
+    <br /><br /><br /><br /><br /><br />
+    <ol class="upper-order-list">
+      <li>
+        Lunes
+        <ol class="roman-order-list">
+          <li>1</li>
+          <li>2</li>
+        </ol>
+      </li>
+      <li>Martes</li>
+      <li>Miércoles</li>
+    </ol>
+    <ol>
+      Ordened List
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+      </ul>
+    </ol>
+    <ul>
+      Unordened list
+      <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ol>
+    </ul>
+    <p id="paragraph2">Paragraph 2</p>
+    <h2>Images</h2>
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS0PooURoYTCJdatB7dlgRl7un364hNQBlFQ&s"
+      alt="devops"
+    />
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Lastname</th>
+          <th>Puntuation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Anderson</td>
+          <td>Cango</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>Juan</td>
+          <td>Viela</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>Mar</td>
+          <td>Fernández</td>
+          <td>10</td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
