@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bogati - Helados con Queso</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #fffefc;
+      }
+      .navbar-brand img {
+        height: 50px;
+      }
+      .top-social a {
+        color: #6c3;
+        margin: 0 5px;
+        font-size: 18px;
+      }
+      .carousel-item img {
+        width: 100%;
+        height: auto;
+      }
+      .promo-section {
+        padding: 2rem;
+        background-color: #fff3d6;
+        text-align: center;
+      }
+      .promo-section h2 {
+        font-weight: bold;
+        color: #f97316;
+      }
+      .promo-section p {
+        font-size: 1.2rem;
+        margin: 1rem 0;
+      }
+      .main-footer {
+        background-color: #6b3600;
+        color: white;
+      }
+      .main-footer a {
+        color: white;
+        text-decoration: none;
+      }
+      .main-footer a:hover {
+        text-decoration: underline;
+      }
+      .footer-title {
+        font-weight: bold;
+        color: #ff8c33;
+        margin-bottom: 0.5rem;
+      }
+      .footer-logo img {
+        height: 50px;
+      }
+      h1 {
+        font-weight: 700;
+        color: #5a380b;
+      }
+      h3 {
+        color: #f19023;
+      }
+      .divider {
+        border-right: 2px dashed #b28d5f;
+      }
+      .icon-wrapper {
+        width: 250px;
+        height: 150px;
+        margin: auto;
+      }
+      .btn-outline {
+        border-radius: 10px;
+        border: 2px solid #5a380b;
+        color: #5a380b;
+      }
+      .btn-outline:hover {
+        border: 2px solid #ff9633;
+        color: #5a380b;
+      }
+      .carousel-item img {
+        width: 220px;
+        height: auto;
+        object-fit: cover;
+      }
+      .carousel-indicators [data-bs-target] {
+        width: 42px;
+        height: 6px;
+        border-radius: 4px;
+      }
+      .carousel-indicators .active {
+        background: #1e56ff;
+      }
+      .btn-outline-dark {
+        border-width: 2px;
+        letter-spacing: 0.03em;
+      }
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .carousel-track {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+      }
+
+      .carousel-track::-webkit-scrollbar {
+        display: none; /* Chrome */
+      }
+
+      .carousel-item-custom {
+        flex: 0 0 calc(100% / 3); /* 3 items visibles */
+        text-align: center;
+      }
+
+      .menu-img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: contain;
+      }
+
+      .arrow-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        padding: 0.5rem;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      .arrow-left {
+        left: 0;
+      }
+
+      .arrow-right {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top bar social -->
+
+    <!-- Carrusel -->
+    <div id="bogatiCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img
+            src="https://bogati.ec/assets/img/inicio/Banner_web_Inco.jpg"
+            class="d-block w-100"
+            alt="Imagen 1"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://bogati.ec/assets/img/inicio/Banner-web-enero-bogati.jpg"
+            class="d-block w-100"
+            alt="Imagen 2"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://bogati.ec/assets/img/inicio/Banner-InicioPromos.jpg"
+            class="d-block w-100"
+            alt="Imagen 3"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://bogati.ec/assets/img/inicio/Anuncio-michelada-de-maracuyá-banner-web.jpg"
+            class="d-block w-100"
+            alt="Imagen 4"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#bogatiCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#bogatiCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <!-- Store -->
+    <section class="py-5 text-center">
+      <div class="container">
+        <h1 class="mb-2">SABOR NATURALMENTE ADICTIVO</h1>
+        <h3 class="mb-5">Cada vez más cerca de ti</h3>
+
+        <div class="row g-0 bg-light rounded-4 py-5">
+          <!-- Columna “Encuentra una tienda” -->
+          <div
+            class="col-md-6 divider d-flex flex-column align-items-center gap-4"
+          >
+            <div class="icon-wrapper">
+              <img
+                src="https://bogati.ec/assets/img/icono-encuentra-una-tienda.png"
+                alt="Tienda Bogati"
+                class="img-fluid"
+              />
+            </div>
+            <a class="btn btn-outline px-4" href="#tiendas">
+              Encuentra una Tienda &nbsp;›
+            </a>
+          </div>
+
+          <!-- Columna “Comprar online” -->
+          <div class="col-md-6 d-flex flex-column align-items-center gap-4">
+            <div class="icon-wrapper">
+              <img
+                src="https://bogati.ec/assets/img/icono-pedido-en-line.png"
+                alt="Comprar online"
+                class="img-fluid"
+              />
+            </div>
+            <a class="btn btn-outline px-4" href="#online">
+              Comprar Online &nbsp;›
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Carrusel Menú -->
+    <div class="container my-5 text-center">
+      <h1 class="mb-2">MENÚ</h1>
+      <h3 class="mb-5">Buenos por Fuera, Buenos por Dentro</h3>
+
+      <div class="carousel-container">
+        <button class="arrow-btn arrow-left" onclick="scrollCarousel(-1)">
+          ❮
+        </button>
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Repite elementos del carrusel -->
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/Super_chococake.jpg"
+              class="menu-img"
+              alt="Super Chococake"
+            />
+            <h4>Super Chococake</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/Super_magica.jpg"
+              class="menu-img"
+              alt="Super Mágica"
+            />
+            <h4>Super Mágica</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/Tulibogati.jpg"
+              class="menu-img"
+              alt="Tuli Bogati"
+            />
+            <h4>Tuli Bogati</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/Waffle.jpg"
+              class="menu-img"
+              alt="Waffle"
+            />
+            <h4>Waffle Bogati</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/Banana.jpg"
+              class="menu-img"
+              alt="Banana"
+            />
+            <h4>Banana</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/CopaDuraznos.jpg"
+              class="menu-img"
+              alt="Copa Duraznos"
+            />
+            <h4>Copa Duraznos</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/ensalada_de_frutas.jpg"
+              class="menu-img"
+              alt="Ensalada de frutas"
+            />
+            <h4>Ensalada de frutas</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/Fresas.jpg"
+              class="menu-img"
+              alt="Fresas"
+            />
+            <h4>Fresas</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/Lasaña.jpg"
+              class="menu-img"
+              alt="Lasaña"
+            />
+            <h4>Lasaña</h4>
+          </div>
+          <div class="carousel-item-custom">
+            <img
+              src="https://bogati.ec/assets/img/inicio/menu/Lody_cake.jpg"
+              class="menu-img"
+              alt="Lody Cake"
+            />
+            <h4>Lody Cake</h4>
+          </div>
+        </div>
+        <button class="arrow-btn arrow-right" onclick="scrollCarousel(1)">
+          ❯
+        </button>
+      </div>
+
+      <div class="text-center mt-4">
+        <button class="btn btn-outline-dark">VER MENÚ COMPLETO</button>
+      </div>
+    </div>
+
+    <script>
+      function scrollCarousel(direction) {
+        const track = document.getElementById("carouselTrack");
+        const scrollAmount =
+          track.querySelector(".carousel-item-custom").offsetWidth + 16; // ancho + gap
+        track.scrollBy({
+          left: direction * scrollAmount,
+          behavior: "smooth",
+        });
+      }
+    </script>
+
+    <!-- More information -->
+    <div class="row text-center">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5 p-4">
+        <h1 class="font-weight-700">CONÓCENOS DESDE ADENTRO</h1>
+        <span class="font-size-20"
+          >Somos una empresa ecuatoriana con la misión de hacer felices a las
+          personas a través de productos y servicios de calidad a precios
+          justos.</span
+        >
+      </div>
+      <div class="col-sm-5">
+        <img
+          src="https://bogati.ec/assets/img/inicio/imagen-agricultor.png"
+          alt=""
+        />
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+    <div class="text-center">
+      <h1>Nuestra historia</h1>
+      <h3>Cada paso que damos es por ti</h3>
+    </div>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-5">
+        <img src="https://bogati.ec/assets/img/Foto-heladero.png" alt="" />
+      </div>
+      <div class="col-sm-5">
+        <span class=""
+          >Comenzamos en Riobamba, haciendo helado de leche de coco para amigos.
+          Resulta que mucha gente compartió nuestro sueño de un postre cremoso y
+          sin lácteos. Hoy, estamos presentes en las 3 regiones del
+          Ecuador.</span
+        >
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script>
+      fetch("./componentes/footer.html")
+        .then((res) => res.text())
+        .then((html) => (document.getElementById("footer").innerHTML = html));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
