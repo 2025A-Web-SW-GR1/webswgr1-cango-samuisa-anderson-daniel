@@ -10,6 +10,7 @@ import {
   Put,
   Query,
   Res,
+  Session,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
@@ -22,10 +23,44 @@ import { CrearEditarBaseDto } from './dto/crear-editar.base.dto';
 import { CasaEditarDto } from './dto/casa-editar.dto';
 import { CasaService } from './casa.service';
 import { Casa } from './casa.entity';
+import { Response } from 'express';
 
-@Controller('api/casa')
+@Controller('/api/casa')
 export class CasaController {
   constructor(private readonly casaService: CasaService) {}
+
+  @Get('tabla')
+  async showTable(
+    @Session() session: Record<string, any>,
+    @Res() res: Response,
+  ) {
+    if (!session.usuario) {
+      return res.redirect('/auth/login-vista');
+    }
+
+    try {
+      await this.casaService.createExampleData();
+
+      const casas = await this.casaService.obtenerTodos({});
+
+      return res.render('home', {
+        casas,
+        usuario: session.usuario,
+        totalCasas: casas.length,
+        valorTotal: casas.reduce((total, casa) => total + casa.valor, 0),
+        titulo: 'Lista de Casas',
+      });
+    } catch (error) {
+      console.error('Error al obtener casas:', error);
+      return res.render('home', {
+        casas: [],
+        usuario: session.usuario,
+        error: 'Error al cargar los datos de las casas',
+        titulo: 'Lista de Casas - Examen',
+      });
+    }
+  }
+
   @Get()
   obtener(@Query() parametrosConsulta: BuscarDto) {
     const objetoBusqueda: FindManyOptions<Casa> = {};

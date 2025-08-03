@@ -1,3 +1,4 @@
+//======================= TRABAJO EN CLASE ============================
 import {
   Controller,
   Get,
@@ -5,11 +6,11 @@ import {
   Post,
   Body,
   Req,
-  Request,
   Res,
   Query,
 } from '@nestjs/common';
 import { CasaService } from './casa/casa.service';
+import { Response } from 'express';
 
 @Controller('auth')
 export class AuthController {
@@ -25,33 +26,54 @@ export class AuthController {
   // LoginMetodo
   @Post('login')
   async login(
-    @Body() login: { username: string; password: string; rest: boolean },
+    @Body() login: { username: string; password: string; rest?: boolean },
     @Session() session: Record<string, any>,
-    @Res() res: any,
+    @Res() res: Response,
   ) {
-    // Using @Session() decorator
     try {
+      if (login.username === 'daniel' && login.password === 'admin') {
+        session.usuario = {
+          id: 0,
+          username: 'daniel',
+          nombre: 'Daniel',
+          rol: 'admin',
+        };
+
+        if (login.rest) {
+          return {
+            mensaje: 'Usuario logeado exitosamente (quemado)',
+          };
+        }
+        return res.redirect('/api/casa/tabla');
+      }
+
       const respuesta = await this.casaService.buscarUnoPorUsername(
         login.username,
       );
+
+      if (!respuesta) {
+        return res.redirect('/auth/login-vista?mensaje=Usuario no encontrado');
+      }
+
       if (respuesta.password === login.password) {
-        session.user = {
-          ...respuesta,
-        };
+        session.usuario = { ...respuesta };
+
         if (login.rest) {
           return {
             mensaje: 'Usuario logeado exitosamente',
           };
         }
-        res.redirect('/auth/sesion');
+        return res.redirect('/api/casa/tabla');
       } else {
-        res.redirect(
+        return res.redirect(
           '/auth/login-vista?mensaje=Usuario y password no coinciden',
         );
       }
     } catch (e) {
-      console.error('No se encontro usuario');
-      res.redirect('/auth/login-vista?mensaje=Usuario no encontrado');
+      console.error('Error en login:', e);
+      return res.redirect(
+        '/auth/login-vista?mensaje=Error interno del servidor',
+      );
     }
   }
 
