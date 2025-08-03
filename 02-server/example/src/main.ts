@@ -1,11 +1,18 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 import * as session from 'express-session';
 import * as sessionFileStore from 'session-file-store';
+// import necesarios para el EJS
+import { NestExpressApplication } from '@nestjs/platform-express';
+import * as path from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
+  // Instalar para la sesion:
+  // npm install express-session session-file-store @types/express-session
+  // Setear la sesion
   const FileStore = sessionFileStore(session); // Initialize FileStore
   app.use(
     session({
@@ -23,5 +30,16 @@ async function bootstrap() {
       },
     }),
   );
+
+  // Setear el motor de renderizado del servidor
+  // npm install ejs
+
+  app.set('view engine', 'ejs');
+  // Donde van a estar los archivos de vista
+  app.setBaseViewsDir(path.join(__dirname, '..', 'views'));
+  // Donde van a estar los archivos publicos
+  app.useStaticAssets(path.join(__dirname, '..', 'public'));
+
+  await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
